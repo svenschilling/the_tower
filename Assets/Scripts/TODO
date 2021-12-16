@@ -1,0 +1,14 @@
+CAM
+- implement cinemachine and configure it properly
+
+
+WORLD
+- implement more blocks
+- add feature to all blocks
+- ! most important import a destroy_block() feature
+
+ANIMATIONS
+- implement more ANIMATIONS
+- fix wrong ANIMATIONS
+
+
