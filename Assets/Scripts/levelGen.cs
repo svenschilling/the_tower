@@ -5,14 +5,16 @@ using UnityEngine;
 public class levelGen : MonoBehaviour
 {
     List<GameObject> blockList = new List<GameObject>();
+    // saves coordinates of free space
+    List<int> freeSpaces = new List<int>();
     public GameObject wall;
     public GameObject block1;
     public GameObject block2;
     public GameObject block3;
     public GameObject block4;
-    private int startPoint = 0;
-    private int endPoint = 30;
-    private int blockHeight = 30;
+    public int startPoint = 0;
+    public int endPoint = 30;
+    public int blockHeight = 30;
     public Camera camPosition;
 
     
@@ -39,7 +41,7 @@ public class levelGen : MonoBehaviour
 
     void SpawnLevelBlock()
     {          
-        int level_width = 10;
+        int level_width = 20;
         int blockIndex = Random.Range(0,4);
               
         // add block GameObjects into list
@@ -58,14 +60,21 @@ public class levelGen : MonoBehaviour
 
                 // build a wall
                 int wall_left = x-1;
-                int wall_right = x+10;
+                int wall_right = x+level_width;
                 
                 if(x == 0)
                 {
                     Instantiate(wall,new Vector2(wall_left,y),Quaternion.identity);
                     Instantiate(wall,new Vector2(wall_right,y),Quaternion.identity);
                 }
-
+                // if no block then save coordinates
+                if(block_or_not < 60)
+                {
+                    freeSpaces.Add(x * 32);
+                    freeSpaces.Add(y * 32);
+                    Debug.Log(freeSpaces[y]);
+                    Debug.Log(freeSpaces[y+1]);
+                }
                 // build random level structure
                 if(block_or_not >= 60 && block_or_not < 80)
                 {
