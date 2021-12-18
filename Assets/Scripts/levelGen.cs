@@ -5,13 +5,15 @@ using UnityEngine;
 public class levelGen : MonoBehaviour
 {
     List<GameObject> blockList = new List<GameObject>();
-    // saves coordinates of free space
-    List<int> freeSpaces = new List<int>();
+    // gameobjects needed to generate level    
     public GameObject wall;
     public GameObject block1;
     public GameObject block2;
     public GameObject block3;
     public GameObject block4;
+    // power ups
+    public GameObject powerUp;
+    // level generation vars
     public int startPoint = 0;
     public int endPoint = 30;
     public int blockHeight = 30;
@@ -70,10 +72,16 @@ public class levelGen : MonoBehaviour
                 // if no block then save coordinates
                 if(block_or_not < 60)
                 {
-                    freeSpaces.Add(x * 32);
-                    freeSpaces.Add(y * 32);
-                    Debug.Log(freeSpaces[y]);
-                    Debug.Log(freeSpaces[y+1]);
+                    // spawn power up on procentual base on 60 and below
+                    if (block_or_not >= 4 && block_or_not < 10)
+                    {
+                        Instantiate(powerUp,new Vector2(x,y),Quaternion.identity );    
+                    }
+                    
+                    
+                    
+            
+                    
                 }
                 // build random level structure
                 if(block_or_not >= 60 && block_or_not < 80)
