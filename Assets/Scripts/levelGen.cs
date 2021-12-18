@@ -5,6 +5,7 @@ using UnityEngine;
 public class levelGen : MonoBehaviour
 {
     List<GameObject> blockList = new List<GameObject>();
+    List<GameObject> powerUpList = new List<GameObject>();
     // gameobjects needed to generate level    
     public GameObject wall;
     public GameObject block1;
@@ -12,7 +13,10 @@ public class levelGen : MonoBehaviour
     public GameObject block3;
     public GameObject block4;
     // power ups
-    public GameObject powerUp;
+    public GameObject powerup_superjump;
+    public GameObject powerup_time;
+    public GameObject powerup_flame;
+    
     // level generation vars
     public int startPoint = 0;
     public int endPoint = 30;
@@ -45,12 +49,17 @@ public class levelGen : MonoBehaviour
     {          
         int level_width = 20;
         int blockIndex = Random.Range(0,4);
+        int powerUpIndex = Random.Range(0,2);
               
         // add block GameObjects into list
         blockList.Add(block1);
         blockList.Add(block2);
         blockList.Add(block3);
         blockList.Add(block4);
+
+        // add power up GameObjects into list
+        powerUpList.Add(powerup_superjump);
+        powerUpList.Add(powerup_flame);
         
         // main logic
         for (int y = startPoint; y < endPoint; y++)
@@ -73,11 +82,23 @@ public class levelGen : MonoBehaviour
                 if(block_or_not < 60)
                 {
                     // spawn power up on procentual base on 60 and below
-                    if (block_or_not >= 4 && block_or_not < 10)
+                    if (block_or_not >= 4 && block_or_not < 8)
                     {
-                        Instantiate(powerUp,new Vector2(x,y),Quaternion.identity );    
+                        Instantiate(powerup_time,new Vector2(x,y),Quaternion.identity );    
                     }
-                    
+                    if (block_or_not > 0 && block_or_not < 4)
+                    {
+                        //! random factor is not wroking correctly
+                        
+                        if (powerUpIndex == 0)
+                        {
+                            Instantiate(powerUpList[0],new Vector2(x,y),Quaternion.identity );       
+                        } 
+                        if (powerUpIndex == 1)
+                        {
+                            Instantiate(powerUpList[1],new Vector2(x,y),Quaternion.identity );   
+                        }
+                    }
                     
                     
             

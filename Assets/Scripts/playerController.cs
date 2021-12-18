@@ -8,7 +8,9 @@ public class playerController : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim;
     private bool isOnGround;
-    [SerializeField] private float speed;
+    [SerializeField] private float jump_speed;
+    [SerializeField] private float movement_speed;
+    Vector2 move;
 
 
     private void Awake()
@@ -18,14 +20,20 @@ public class playerController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
+    // FixedUpdate call in order ot get correct update on physics
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
         body.velocity = new Vector2(horizontalInput,body.velocity.y);
-        // body.velocity = new Vector2(body.velocity.x,Input.GetAxis("Vertical"));
         
-        // flip player sprite
+        // ! something is wrong here ! when running and holding shift start running
+        if (Input.GetKeyDown(KeyCode.A | KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift | KeyCode.RightShift))
+        {
+            body.velocity = new Vector2(horizontalInput * movement_speed,body.velocity.y);
+        }
+        
+        // ANIMATION flip player sprite
         if(horizontalInput > 0.01f)
         {
             transform.localScale = Vector2.one;
@@ -37,18 +45,18 @@ public class playerController : MonoBehaviour
         
         if(Input.GetKey(KeyCode.Space))
         {
-            body.velocity = new Vector2(body.velocity.x,speed);
+            body.velocity = new Vector2(body.velocity.x,jump_speed);
             
         }
         
 
-        // set animator parameters
+        // ANIMATION set animator parameters
         anim.SetBool("run", horizontalInput != 0);
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void Update()
     {
-  
+        move = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
     }
 
 }

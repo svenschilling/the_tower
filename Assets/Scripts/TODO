@@ -1,11 +1,13 @@
 CAM
-- implement cinemachine and configure it properly
+- cinemachine confiner need to update to player movement
 
 
 WORLD
 - implement more blocks
 - add feature to all blocks
 - ! most important import a destroy_block() feature
+
+- implement a startup area where no blocks are created on level start (mb 9x9)
 
 ANIMATIONS
 - implement more ANIMATIONS
@@ -18,3 +20,4 @@ POWERUP
 
 CINEMACHINE CONFINER
 - need to move with player
+
