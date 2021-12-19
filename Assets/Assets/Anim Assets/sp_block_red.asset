@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: sp_block_red
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -2010612777048026298, guid: 84d362d1589dcfd4a8492c18922e1826, type: 3}
+  - {fileID: 8179543316874427013, guid: 84d362d1589dcfd4a8492c18922e1826, type: 3}
+  - {fileID: -4447125437136931514, guid: 84d362d1589dcfd4a8492c18922e1826, type: 3}
+  - {fileID: -1049950170045795815, guid: 84d362d1589dcfd4a8492c18922e1826, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0

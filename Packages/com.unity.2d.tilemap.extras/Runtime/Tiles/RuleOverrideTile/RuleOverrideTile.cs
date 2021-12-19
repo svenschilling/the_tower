@@ -363,9 +363,6 @@ namespace UnityEngine.Tilemaps
             return m_InstanceTile.StartUp(position, tilemap, go);
         }
 
-        /// <summary>
-        /// Callback when the tile is enabled
-        /// </summary>
         public void OnEnable()
         {
             if (m_Tile == null)
